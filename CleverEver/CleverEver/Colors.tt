@@ -1,0 +1,115 @@
+﻿<#@ template language="C#" hostspecific="True" #>
+<#@ output extension=".cs" #>
+<#@ assembly name="System.Core" #>
+<#@ assembly name="System.Drawing" #>
+<#@ assembly name="System.Xml" #>
+<#@ assembly name="System.ComponentModel" #>
+<#@ assembly name="$(SolutionDir)\packages\Xamarin.Forms.2.3.3.193\lib\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.Core.dll" #>
+<#@ assembly name="$(SolutionDir)\packages\Xamarin.Forms.2.3.3.193\lib\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.Xaml.dll" #>
+<#@ assembly name="$(SolutionDir)\CleverEver\CleverEver\bin\Debug\CleverEver.Phone.dll" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ import namespace="System.Xml" #>
+<#@ import namespace="System.Drawing" #>
+<#@ import namespace="System.Globalization" #>
+<#@ import namespace="System.Text.RegularExpressions" #>
+<# 
+string path = Host.ResolvePath("App.xaml");
+XmlDocument doc = new XmlDocument();
+doc.Load(path);
+
+Dictionary<string, Color> knownColors = new Dictionary<string, Color> ();
+List<string> exports = new List<string> ();
+
+XmlNamespaceManager nsmgr = new XmlNamespaceManager(doc.NameTable);
+nsmgr.AddNamespace("artina", "clr-namespace:UXDivers.Artina.Shared;assembly=UXDivers.Artina.Shared");
+nsmgr.AddNamespace("xamarin", "http://xamarin.com/schemas/2014/forms");
+
+XmlNode resources = doc.DocumentElement.SelectSingleNode("/xamarin:Application/xamarin:Application.Resources/xamarin:ResourceDictionary", nsmgr);
+
+if (resources != null) {
+	foreach (XmlNode node in resources.ChildNodes) 
+    {
+		if (node.NodeType == XmlNodeType.Comment) 
+        {
+			var comment = node.InnerText.Trim (); 
+
+			Match match = Regex.Match(comment, @"Export\s([A-Za-z0-9\-]+)$", RegexOptions.IgnoreCase);
+
+			if (match.Success)
+				exports.Add (match.Groups[1].Value);
+            continue;
+		}
+        
+        if (node.Name == "Color") {
+			string colorName = null;
+
+			foreach (XmlAttribute attribute in node.Attributes) {
+				if (attribute.LocalName == "Key") {
+					colorName = attribute.Value;
+					var colorDefinition = node.InnerText.Trim ();
+					Color color;
+
+					if (colorDefinition.StartsWith ("#")) {
+						if (colorDefinition.Length == 7) {
+							colorDefinition = "FF" + colorDefinition;
+						}
+						int argb = Int32.Parse (colorDefinition.Replace ("#", ""), NumberStyles.HexNumber);
+						color = Color.FromArgb (argb);
+					} else {
+						color = Color.FromName (colorDefinition);
+					}
+
+					knownColors.Add (colorName, color);
+				}
+			}
+
+            continue;
+		}
+        
+        /*if (node.Name.Contains(':')) {
+           Match namespaceRegex = Regex.Match(node.NamespaceURI, @"(clr-namespace:)(?<namespace>[^;]+)", RegexOptions.IgnoreCase);
+           Match assemblyRegex = Regex.Match(node.NamespaceURI, @"(assembly=)(?<assembly>[^;]+)", RegexOptions.IgnoreCase);
+
+           var @namespace = namespaceRegex.Groups["namespace"].Value;
+           var @assemblyName = assemblyRegex.Groups["assembly"].Value;
+
+           var assembly = System.AppDomain.CurrentDomain.GetAssemblies().SingleOrDefault(li => li.GetName().Name == @assemblyName);
+           if (assembly == null)
+              throw new InvalidOperationException($"Unable to locate assembly {@assemblyName}");
+
+           var instance = assembly.CreateInstance(@namespace + "." + node.LocalName);
+           var markupExtension = instance as Xamarin.Forms.Xaml.IMarkupExtension;
+           if (markupExtension != null) {
+                var color = markupExtension.ProvideValue(null);
+           }
+
+           continue;
+        }*/
+	}
+}				
+
+if (exports.Count > 0){
+#>
+using Xamarin.Forms;
+
+namespace CleverEver.Phone
+{
+   public static class ExportedColors {
+<#
+  foreach(var name in exports){ 
+     Color color;
+
+     if (knownColors.TryGetValue(name, out color)){
+#>
+      public static readonly Color <#= name #> = Color.FromRgba(<#= color.R #>, <#= color.G #>, <#= color.B #>, <#= color.A #>); 
+<#
+	 }
+  }
+#>
+   }
+}
+<#
+}
+#>

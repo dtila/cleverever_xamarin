@@ -1,0 +1,59 @@
+{
+  "project_info": {
+    "project_number": "844202991065",
+    "firebase_url": "https://api-8007260213630835760-116438.firebaseio.com",
+    "project_id": "api-8007260213630835760-116438",
+    "storage_bucket": "api-8007260213630835760-116438.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:844202991065:android:153a35c3ec92a398",
+        "android_client_info": {
+          "package_name": "ro.winschool.cleverever"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "844202991065-n3re64ecp349oaj3mkvq7bc8bmo00hqp.apps.googleusercontent.com",
+          "client_type": 3
+        },
+        {
+          "client_id": "844202991065-kenr3oa15vdno6d4qtbtjnk1l7nvv49g.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "ro.winschool.cleverever",
+            "certificate_hash": "21b913361c85a82c1012bbf66062bb52a0041a19"
+          }
+        },
+        {
+          "client_id": "844202991065-709m1dbm8mnocqdvg0ldboh1le7s6gjo.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC6kDosOtwm2FWNXtLIzT8GtKpPe5VLBAo"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "844202991065-n3re64ecp349oaj3mkvq7bc8bmo00hqp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

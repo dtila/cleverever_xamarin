@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+            x:Class="CleverEver.Phone.Pages.Home.HomePage"
+            xmlns:i18n="clr-namespace:CleverEver.Localization;assembly=CleverEver.Phone"
+            xmlns:phone="clr-namespace:CleverEver.Phone;assembly=CleverEver.Phone"
+            xmlns:controls="clr-namespace:CleverEver.Controls;assembly=CleverEver.Phone"
+            xmlns:ff="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+            xmlns:fftransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
+            xmlns:artina="clr-namespace:UXDivers.Artina.Shared;assembly=UXDivers.Artina.Shared">
+
+  <Grid RowSpacing="0">
+    <Grid Padding="0,0,0,0" BackgroundColor="Black">
+
+      <!-- MAIN IMAGE -->
+      <ff:CachedImage x:Name="background" DownsampleToViewSize="True" Source="menu_background.jpg" 
+                      HorizontalOptions="Fill" VerticalOptions="Fill"
+                      Aspect="AspectFill"
+                      Opacity=".6" />
+
+    </Grid>
+
+    <StackLayout Orientation="Vertical" Spacing="16" Padding="30,0" WidthRequest="100">
+
+      <StackLayout HorizontalOptions="Center" Margin="0,20,0,40" Spacing="0">
+
+        <Label Text="CleverEver" TextColor="{StaticResource PrimaryColorLight}" 
+               FontSize="70" Margin="-16" FontFamily="Libertinas" FontAttributes="Bold" HorizontalTextAlignment="Center"></Label>
+
+        <Label Text="Inspirație contra transpirație" TextColor="{StaticResource PrimaryColor}" 
+               FontSize="14" Margin="-16" FontAttributes="Bold" HorizontalTextAlignment="End"></Label>
+
+      </StackLayout>
+
+      <controls:Button Text="{x:Static i18n:UserMessages.how_it_works}" Clicked="AboutButton_Clicked" Style="{StaticResource PrimaryActionButtonStyle}" />
+      <controls:Button Text="{x:Static i18n:Actions.single_player}" Command="{Binding PracticeCommand}" Style="{StaticResource PrimaryActionButtonStyle}" />
+      <controls:Button Text="{x:Static i18n:UserMessages.open_quests}" Command="{Binding ViewQuestsCommand}" Style="{StaticResource PrimaryActionButtonStyle}" 
+                       IsVisible="{Binding IsAnyOpenedQuest}" />
+      <controls:Button Text="Test" Clicked="Button_Clicked" Style="{StaticResource PrimaryActionButtonStyle}" IsVisible="False" />
+      
+      <!--<controls:Button Text="{x:Static i18n:Actions.create_game}" Command="{Binding CreateGameCommand}" Style="{StaticResource PrimaryActionButtonStyle}" IsVisible="False" />
+      <controls:Button Text="{x:Static i18n:Actions.join_game}" Command="{Binding JoinGameCommand}" Style="{StaticResource PrimaryActionButtonStyle}" IsVisible="False" />
+      <controls:Button Text="{x:Static i18n:UserMessages.leaderboard}" Clicked="Button_Clicked" Style="{StaticResource PrimaryActionButtonStyle}" IsVisible="False" />-->
+
+    </StackLayout>
+  </Grid>
+
+</ContentPage>

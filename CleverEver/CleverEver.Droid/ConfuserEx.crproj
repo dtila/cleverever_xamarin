@@ -1,0 +1,8 @@
+<project outputDir="D:\MyProjects\cleverever_git\CleverEver\CleverEver.Droid\Dotfuscated" baseDir="D:\MyProjects\cleverever_git\" xmlns="http://confuser.codeplex.com">
+  <module path="CleverEver\CleverEver\bin\Release\CleverEver.Phone.dll">
+    <rule pattern="CleverEver" inherit="false" />
+  </module>
+  <module path="CleverEver.Common\bin\Release\CleverEver.Common.dll" />
+  <module path="CleverEver.Domain\bin\Release\CleverEver.Domain.dll" />
+  <probePath>C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\MonoAndroid\v7.1</probePath>
+</project>

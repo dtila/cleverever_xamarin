@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:i18n="clr-namespace:CleverEver.Localization;assembly=CleverEver.Phone"
+             x:Class="CleverEver.Pages.About.HowItWorks"
+             Title="{x:Static i18n:UserMessages.how_it_works}">
+
+    <WebView x:Name="web">
+    </WebView>
+    
+</ContentPage>

@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:ff="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             xmlns:fftransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
+             x:Class="CleverEver.Pages.Game.Templates.VerticalScoredItem"
+             x:Name="view">
+    
+    <StackLayout Spacing="5" Orientation="Vertical" Padding="2">
+        <Label FontSize="Medium" Text="{Binding Rank}" WidthRequest="20" 
+               HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center"
+               VerticalOptions="FillAndExpand" VerticalTextAlignment="Center" />
+
+        <ff:CachedImage WidthRequest="{Binding ImageHeight, Source={x:Reference view}}" HeightRequest="{Binding ImageHeight, Source={x:Reference view}}" DownsampleToViewSize="True" 
+                        LoadingPlaceholder="profile" ErrorPlaceholder="profile"
+                        Source="{Binding Name}">
+            <ff:CachedImage.Transformations>
+                <fftransformations:CircleTransformation />
+            </ff:CachedImage.Transformations>
+        </ff:CachedImage>
+
+        <Label FontSize="Medium" FontAttributes="Bold" Text="{Binding Name}" HorizontalOptions="FillAndExpand" VerticalOptions="End" LineBreakMode="TailTruncation" HorizontalTextAlignment="Center" />
+
+        <Label FontSize="Small" Text="{Binding Score}" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center"  VerticalOptions="End"
+               TextColor="{StaticResource AccentColor}" />
+    </StackLayout>
+
+</ContentView>

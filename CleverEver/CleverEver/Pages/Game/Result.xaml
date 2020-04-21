@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:i18n="clr-namespace:CleverEver.Localization;assembly=CleverEver.Phone"
+             xmlns:ff="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             xmlns:templates="clr-namespace:CleverEver.Pages.Game.Templates"
+             xmlns:controls="clr-namespace:CleverEver.Controls;assembly=CleverEver.Phone"
+             Title="{x:Static i18n:UserMessages.leaderboard}"
+             Style="{StaticResource BackgroundImageTemplate}"
+             x:Class="CleverEver.Pages.Game.Result">
+  <ContentPage.Resources>
+    <ResourceDictionary>
+      <Style TargetType="Label" x:Key="LabelDescription">
+        <Setter Property="FontSize" Value="36" />
+        <Setter Property="FontFamily" Value="Qraxy" />
+        <Setter Property="TextColor" Value="White" />
+        <Setter Property="Opacity" Value="0.8" />
+      </Style>
+    </ResourceDictionary>
+  </ContentPage.Resources>
+
+  <Grid Padding="30,20">
+    <Grid.RowDefinitions>
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="50" />
+      <RowDefinition Height="50" />
+      <RowDefinition Height="30" />
+      <RowDefinition Height="30" />
+      <RowDefinition Height="30" />
+      <RowDefinition Height="30" />
+      <RowDefinition Height="*" />
+      <RowDefinition Height="Auto" />
+    </Grid.RowDefinitions>
+
+    <Label Grid.Row="0" Text="{x:Static i18n:UserMessages.game_over}" Margin="10" FontFamily="Libertinas" FontSize="60" TextColor="{StaticResource PrimaryColorLight}" 
+             HorizontalOptions="Center"></Label>
+
+    <Label Grid.Row="1" x:Name="pointsLabel" Text="{Binding TotalScore, StringFormat={x:Static i18n:UserMessages.points_total_format}}" FontFamily="Qraxy" FontSize="50" TextColor="{StaticResource PrimaryColor}" 
+             HorizontalOptions="Center"></Label>
+
+    <Label Grid.Row="2" x:Name="bonusLabel" Text="{Binding BonusScore, StringFormat={x:Static i18n:UserMessages.bonus_format}}" FontFamily="Qraxy" FontSize="40" TextColor="{StaticResource PrimaryColor}" 
+             HorizontalOptions="Center"></Label>
+
+
+    <Label Grid.Row="3" Text="{x:Static i18n:UserMessages.consecutive}" Style="{StaticResource LabelDescription}" HorizontalOptions="Start"></Label>
+    <Label Grid.Row="3" Text="{Binding ConsecutiveAnswers}" Style="{StaticResource LabelDescription}" HorizontalOptions="End"></Label>
+
+    <Label Grid.Row="4" Text="{x:Static i18n:UserMessages.correct_answers}" Style="{StaticResource LabelDescription}" HorizontalOptions="Start"></Label>
+    <Label Grid.Row="4" Text="{Binding CorrectAnswered}" Style="{StaticResource LabelDescription}" HorizontalOptions="End"></Label>
+
+    <Label Grid.Row="5" Text="{x:Static i18n:UserMessages.wrong_answers}" Style="{StaticResource LabelDescription}" HorizontalOptions="Start"></Label>
+    <Label Grid.Row="5" Text="{Binding WrongAnswered}" Style="{StaticResource LabelDescription}" HorizontalOptions="End"></Label>
+
+    <Label Grid.Row="6" Text="{x:Static i18n:UserMessages.total_questions}" Style="{StaticResource LabelDescription}" HorizontalOptions="Start"></Label>
+    <Label Grid.Row="6" Text="{Binding TotalQuestions}" Style="{StaticResource LabelDescription}" HorizontalOptions="End"></Label>
+
+
+    <controls:Button Grid.Row="8" Text="{x:Static i18n:UserMessages.leaderboard}" Style="{StaticResource PrimaryActionButtonStyle}" Command="{Binding ShowLeaderboardsCommand}"></controls:Button>
+  </Grid>
+
+</ContentPage>

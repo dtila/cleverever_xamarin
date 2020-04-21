@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CleverEver.Pages.Game.ViewCategoriesPage"
+             xmlns:i18n="clr-namespace:CleverEver.Localization;assembly=CleverEver.Phone"
+             xmlns:phone="clr-namespace:CleverEver.Phone;assembly=CleverEver.Phone"
+             xmlns:templates="clr-namespace:CleverEver.Pages.Game.Templates;assembly=CleverEver.Phone"
+             xmlns:artina="clr-namespace:UXDivers.Artina.Shared;assembly=UXDivers.Artina.Shared"
+             Title="{x:Static i18n:UserMessages.view_categories}"
+             IsBusy="{Binding IsBusy}"
+             Style="{StaticResource BackgroundImageTemplate}">
+  <ContentPage.Resources>
+    <ResourceDictionary>
+      <Style TargetType="Label">
+        <Setter Property="FontSize" Value="{StaticResource BaseFontSize}" />
+        <Setter Property="TextColor" Value="White" />
+      </Style>
+    </ResourceDictionary>  
+  </ContentPage.Resources>
+  
+  <StackLayout Orientation="Vertical" HorizontalOptions="StartAndExpand">
+
+    <Label Text="{x:Static i18n:UserMessages.view_categories}" TextColor="{StaticResource PrimaryColorLight}" 
+                 FontSize="60" FontFamily="Qraxy" FontAttributes="Bold" HorizontalTextAlignment="Center"></Label>
+
+    <ListView ItemsSource="{Binding Items}"
+                CachingStrategy="RecycleElement"
+                SeparatorVisibility="None"
+                SeparatorColor="#CC000000"
+                RowHeight="80"
+                IsRefreshing="{Binding IsBusy}"
+                IsPullToRefreshEnabled="True"
+                RefreshCommand="{Binding RefreshCommand}"
+                ItemTapped="OnItemTapped"
+                HasUnevenRows="false">
+      <ListView.ItemTemplate>
+        <DataTemplate>
+          <ViewCell>
+            <templates:PurchasedItem />
+          </ViewCell>
+        </DataTemplate>
+      </ListView.ItemTemplate>
+    </ListView>
+  </StackLayout>
+
+</ContentPage>

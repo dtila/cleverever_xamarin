@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+Google Play game services IDs.
+Save this file as res/values/games-ids.xml in your project.
+-->
+<resources>
+	<string name="app_id">844202991065</string>
+	<string name="package_name">ro.winschool.cleverever</string>
+	<string name="achievement_little_language_master">CgkI2but88gYEAIQAg</string>
+	<string name="leaderboard_top_answers">CgkI2but88gYEAIQBg</string>
+	<string name="event_finish_the_basic_language_questions">CgkI2but88gYEAIQBw</string>
+</resources>

@@ -1,0 +1,5 @@
+﻿
+Server operations:
+- submit an order
+   - verify the order and save it
+- get available questions

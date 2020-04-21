@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<linker>
+	<!--
+  We need to use only namespaces because during the obfuscation
+  the types are changed
+  -->
+	<assembly fullname="CleverEver.Common">
+		<namespace fullname="DryIoc" />
+	</assembly>
+
+	<assembly fullname="CleverEver.Phone">
+		<namespace fullname="CleverEver.Phone.Pages.Home" />
+		<namespace fullname="CleverEver.Phone.Pages.About" />
+		<namespace fullname="CleverEver.Localization" />
+		<namespace fullname="CleverEver.Pages.Game" />
+		<namespace fullname="CleverEver.Behaviors" />
+		<namespace fullname="CleverEver.Purchasing" />
+		<namespace fullname="CleverEver.Storage" />
+		<namespace fullname="CleverEver.Phone.ViewModels" />
+		<namespace fullname="CleverEver.Connectivity" />
+	</assembly>
+
+	<assembly fullname="CleverEver.Droid">
+		<namespace fullname="CleverEver.Droid" />
+		<namespace fullname="CleverEver.Droid.Analytics" />
+		<namespace fullname="CleverEver.Droid.Rendering" />
+		<namespace fullname="CleverEver.Droid.Authentication" />
+		<namespace fullname="CleverEver.Droid.Storage" />
+	</assembly>
+
+	<!--<assembly fullname="UXDivers.Artina.Shared.Droid">
+    <namespace fullname="UXDivers.Artina.Shared" />
+  </assembly>-->
+
+	<assembly fullname="Toasts.Forms.Plugin.Droid">
+		<namespace fullname="Plugin.Toasts" />
+		<type fullname="Plugin.Toasts.ToastNotification" />
+	</assembly>
+
+	<assembly fullname="Newtonsoft.Json">
+		<namespace fullname="Newtonsoft.Json.Utilities" />
+		<namespace fullname="Newtonsoft.Json.Serialization" />
+	</assembly>
+
+	<assembly fullname="Acr.Settings">
+		<type fullname="Acr.Settings.SettingsImpl" />
+	</assembly>
+
+	<assembly fullname="Xamarin.Android.Support.v7.AppCompat">
+		<!--<type fullname="Android.Support.V7.Widget.FitWindowsFrameLayout" />
+    <type fullname="Android.Support.V7.Widget.DialogTitle" />
+    <type fullname="Android.Support.V7.Widget.ButtonBarLayout" />-->
+		<type fullname="Android.Support.V4.Widget.Space" />
+		<namespace fullname="Android.Support.V7.Widget" />
+	</assembly>
+
+	<assembly fullname="Xamarin.Firebase.Iid">
+		<type fullname="Firebase.Iid.FirebaseInstanceIdService" />
+		<type fullname="Firebase.Iid.FirebaseInstanceIdReceiver" />
+		<type fullname="Firebase.Iid.FirebaseInstanceIdInternalReceiver" />
+	</assembly>
+
+	<assembly fullname="Xamarin.Firebase.Analytics">
+		<type fullname="Android.Gms.Measurement.AppMeasurementService" />
+	</assembly>
+
+	<assembly fullname="Xamarin.Firebase.Common">
+		<type fullname="Firebase.Provider.FirebaseInitProvider" />
+	</assembly>
+
+</linker>

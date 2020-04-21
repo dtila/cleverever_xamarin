@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CleverEver.Pages.Game.ViewCategoryPage"
+             xmlns:i18n="clr-namespace:CleverEver.Localization;assembly=CleverEver.Phone"
+             xmlns:phone="clr-namespace:CleverEver.Phone;assembly=CleverEver.Phone"
+             xmlns:templates="clr-namespace:CleverEver.Pages.Game.Templates;assembly=CleverEver.Phone"
+             xmlns:artina="clr-namespace:UXDivers.Artina.Shared;assembly=UXDivers.Artina.Shared"
+             Padding="0"
+             IsBusy="{Binding IsBusy}"
+             Style="{StaticResource BackgroundImageTemplate}">
+  <ContentPage.Resources>
+    <ResourceDictionary>
+      <Style TargetType="Label">
+        <Setter Property="FontSize" Value="{StaticResource BaseFontSize}" />
+        <Setter Property="TextColor" Value="White" />
+      </Style>
+    </ResourceDictionary>
+  </ContentPage.Resources>
+
+  <StackLayout Orientation="Vertical" HorizontalOptions="StartAndExpand">
+
+    <Label Text="{Binding Title}" TextColor="{StaticResource PrimaryColorLight}" 
+                 FontSize="60" FontFamily="Qraxy" FontAttributes="Bold" HorizontalTextAlignment="Center"></Label>
+
+    <ListView ItemsSource="{Binding Items}"
+              CachingStrategy="RecycleElement"
+              SeparatorVisibility="None"
+              IsRefreshing="{Binding IsBusy}"
+              SeparatorColor="#CC000000"
+              RowHeight="80"
+              ItemTapped="OnItemTapped"
+              HasUnevenRows="false"
+                >
+      <ListView.ItemTemplate>
+        <DataTemplate>
+          <ViewCell>
+            <templates:PurchasedItem />
+          </ViewCell>
+        </DataTemplate>
+      </ListView.ItemTemplate>
+    </ListView>
+
+  </StackLayout>
+  
+</ContentPage>

@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CleverEver.Pages.Game.QuestionView"
+             xmlns:i18n="clr-namespace:CleverEver.Localization;assembly=CleverEver.Phone"
+             xmlns:game="clr-namespace:CleverEver.Pages.Game;assembly=CleverEver.Phone"
+             xmlns:controls="clr-namespace:CleverEver.Controls;assembly=CleverEver.Phone"
+             xmlns:artina="clr-namespace:UXDivers.Artina.Shared;assembly=UXDivers.Artina.Shared">
+
+  <ContentView.Resources>
+    <ResourceDictionary>
+      <Style x:Key="NormalOptionStyle" TargetType="Button" BasedOn="{StaticResource SecondaryActionButtonStyle}">
+        <Setter Property="BackgroundColor" Value="{StaticResource TransparentAccentColor}" />
+        <Setter Property="FontSize" Value="Small" />
+      </Style>
+      <Style x:Key="HightlightOptionStyle" TargetType="Button" BasedOn="{StaticResource SecondaryActionButtonStyle}">
+        <Setter Property="BackgroundColor" Value="{StaticResource PrimaryColorLight}"/>
+        <Setter Property="FontSize" Value="Small" />
+      </Style>
+      <Style x:Key="CorrectOptionHightlightStyle" TargetType="Button" BasedOn="{StaticResource SecondaryActionButtonStyle}">
+        <Setter Property="BackgroundColor" Value="#8BC34A" />
+        <Setter Property="FontSize" Value="Small" />
+      </Style>
+      <Style x:Key="WrongOptionHightlightStyle" TargetType="Button" BasedOn="{StaticResource SecondaryActionButtonStyle}">
+        <Setter Property="BackgroundColor" Value="#e53935" />
+        <Setter Property="FontSize" Value="Small" />
+      </Style>
+
+      <!-- Final answer style -->
+      <Style x:Key="NormalAnswerStyle" TargetType="Button" BasedOn="{StaticResource SecondaryActionButtonStyle}">
+        <Setter Property="BackgroundColor" Value="{StaticResource TransparentAccentColor}" />
+      </Style>
+      <Style x:Key="HightlightAnswerStyle" TargetType="Button" BasedOn="{StaticResource SecondaryActionButtonStyle}">
+        <Setter Property="BackgroundColor" Value="{StaticResource PrimaryColorLight}"/>
+      </Style>
+    </ResourceDictionary>
+  </ContentView.Resources>
+
+  <Grid>
+    <Grid.RowDefinitions>
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="*" />
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="Auto" />
+    </Grid.RowDefinitions>
+
+    <!--<Grid>
+          <Grid.ColumnDefinitions>
+              <ColumnDefinition Width="*" />
+              <ColumnDefinition Width="*" />
+          </Grid.ColumnDefinitions>
+
+            
+          <controls:Button Text="Pass" Grid.Column="0" HorizontalOptions="Start"  />
+          <controls:Button Text="1/2" Grid.Column="1" HorizontalOptions="End" />
+      </Grid>-->
+
+    <Label Grid.Row="1" Text="{Binding Text}" FontSize="Large" Margin="4" FontAttributes="None" TextColor="White" Opacity="0.95" 
+           VerticalOptions="Center" HorizontalTextAlignment="Center" HorizontalOptions="FillAndExpand" />
+
+    <controls:QuestionsResponsiveGrid x:Name="grid" Grid.Row="2" ItemsSource="{Binding Answers}">
+      <controls:QuestionsResponsiveGrid.ItemTemplate>
+        <DataTemplate>
+          <controls:Button Text="{Binding}" Clicked="Question_Clicked" Style="{StaticResource NormalOptionStyle}" HeightRequest="16" FontSize="Small">
+          </controls:Button>
+        </DataTemplate>
+      </controls:QuestionsResponsiveGrid.ItemTemplate>
+    </controls:QuestionsResponsiveGrid>
+
+    <StackLayout Grid.Row="3">
+      <controls:Button x:Name="finalAnswer" Text="{x:Static i18n:Actions.final_answer}" Clicked="Answer_Clicked" Style="{StaticResource NormalAnswerStyle}" />
+    </StackLayout>
+
+  </Grid>
+</ContentView>

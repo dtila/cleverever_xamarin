@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CleverEver.Pages.Game.PlayPage"
+             xmlns:i18n="clr-namespace:CleverEver.Localization;assembly=CleverEver.Phone"
+             xmlns:game="clr-namespace:CleverEver.Pages.Game;assembly=CleverEver.Phone"
+             xmlns:ff="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             xmlns:fftransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
+             xmlns:artina="clr-namespace:UXDivers.Artina.Shared;assembly=UXDivers.Artina.Shared">
+
+  <Grid>
+    <Grid.RowDefinitions>
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="*" />
+    </Grid.RowDefinitions>
+
+    <Grid Grid.Row="0" Grid.RowSpan="2" Padding="0" BackgroundColor="Black">
+
+      <ff:CachedImage DownsampleToViewSize="True" Source="{StaticResource BrandBackground}" 
+                      HorizontalOptions="Fill" VerticalOptions="Fill"
+                      Aspect="AspectFill"
+                      Opacity=".35" />
+
+    </Grid>
+
+    <Label Grid.Row="0" x:Name="congratulationMessage" Text="{Binding CongratulateText}" TextColor="{StaticResource PrimaryColorLight}" 
+           Margin="0,20" Scale="0"
+           FontSize="50" FontFamily="Libertinas" FontAttributes="Bold" HorizontalTextAlignment="Center">
+    </Label>
+
+    <Label Grid.Row="0" Text="{Binding Score}" TextColor="{StaticResource PrimaryColor}" 
+           Margin="20" FontSize="20" FontAttributes="Bold" HorizontalTextAlignment="End">
+    </Label>
+
+    <game:QuestionView Grid.Row="0" Grid.RowSpan="2" Padding="4" VerticalOptions="FillAndExpand">
+      <game:QuestionView.BindingContext>
+        <game:QuestionViewModel x:Name="questionVM" />
+      </game:QuestionView.BindingContext>
+    </game:QuestionView>
+  </Grid>
+
+</ContentPage>

@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:i18n="clr-namespace:CleverEver.Localization;assembly=CleverEver.Phone"
+             xmlns:templates="clr-namespace:CleverEver.Pages.Game.Templates"
+             Title="{x:Static i18n:UserMessages.leaderboard}"
+             x:Class="CleverEver.Pages.Game.LeaderboardView">
+
+    <!--
+        The template image is here: 
+        https://d1a6a9r46cnyll.cloudfront.net/29499e3b88831d3f3630a7e31e660e342be45e56/687474703a2f2f692e696d6775722e636f6d2f413062503774672e706e67
+    -->
+    
+    <ScrollView>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Row="0" Padding="10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <templates:VerticalScoredItem Grid.Column="0" ImageHeight="70" BindingContext="{Binding SecondPlace}" />
+                <templates:VerticalScoredItem Grid.Column="1" ImageHeight="80" BindingContext="{Binding FirstPlace}" />
+                <templates:VerticalScoredItem Grid.Column="2" ImageHeight="60" BindingContext="{Binding ThirdPlace}" />
+            </Grid>
+
+            <BoxView Grid.Row="1" Style="{StaticResource Horizontal1ptLineStyle}" />
+
+            <ListView Grid.Row="2"
+                  ItemsSource="{Binding Leaderboard}"
+                  ItemTapped="Handle_ItemTapped"
+                  CachingStrategy="RecycleElement"
+                  SeparatorVisibility="None"
+                  RowHeight="80"
+                  IsRefreshing="{Binding IsBusy}">
+
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <templates:HorizontalItemView />
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+
+            </ListView>
+        </Grid>
+    </ScrollView>
+</ContentPage>

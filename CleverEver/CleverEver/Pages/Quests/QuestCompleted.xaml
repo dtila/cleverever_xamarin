@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CleverEver.Pages.Quests.QuestCompleted"
+             xmlns:i18n="clr-namespace:CleverEver.Localization;assembly=CleverEver.Phone">
+  
+  <Label Text="{x:Static i18n:UserMessages.congratulations}" VerticalOptions="Center" FontSize="34" HorizontalOptions="Center" />
+  <Label Text="{x:Static i18n:UserMessages.quest_completed_win}" VerticalOptions="Center" HorizontalOptions="Center" />
+  <Label Text="{x:Static i18n:UserMessages.quest_win_contact_message}" VerticalOptions="Center" HorizontalOptions="Center" />
+
+  <Label Text="{Binding Email, Mode=TwoWay}"></Label>
+
+</ContentPage>

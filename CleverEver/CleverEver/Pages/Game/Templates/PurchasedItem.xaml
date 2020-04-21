@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:converters="clr-namespace:CleverEver.Phone.Converters;assembly=CleverEver.Phone"
+             xmlns:i18n="clr-namespace:CleverEver.Localization;assembly=CleverEver.Phone"
+             x:Class="CleverEver.Pages.Game.Templates.PurchasedItem"
+             Padding="1">
+
+  <Grid>
+
+    <Grid.ColumnDefinitions>
+      <ColumnDefinition Width="Auto" />
+      <ColumnDefinition Width="*" />
+      <ColumnDefinition Width="Auto" />
+    </Grid.ColumnDefinitions>
+
+    <Grid Grid.Column="0" WidthRequest="80" IsVisible="{Binding Icon, Converter={StaticResource NonNullObjectCheckerConverter}}">
+      <Label Text="{Binding Icon}" FontSize="40" Style="{StaticResource FontIcon}"
+             VerticalOptions="Center" HorizontalOptions="Center" />
+    </Grid>
+
+
+    <StackLayout Grid.Column="1" VerticalOptions="Center" Spacing="2" Padding="5,10">
+
+      <Label Text="{Binding Name}" FontSize="Large" LineBreakMode="TailTruncation" />
+
+      <Label Text="{Binding Description}"
+              FontAttributes="Italic"
+              FontSize="Small"
+              IsVisible="{Binding Description, Converter={StaticResource NonEmptyStringCheckerConverter}}" />
+
+    </StackLayout>
+
+    <Label Grid.Column="2" Margin="10" FontSize="40"
+               Style="{StaticResource Icon_Lock}"
+               IsVisible="{Binding IsLocked}"
+               VerticalOptions="Center"
+               HorizontalTextAlignment="End" />
+
+  </Grid>
+
+</ContentView>
